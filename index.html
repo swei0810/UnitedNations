@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+
+    <script src="./src/assets/world-map.geo.json"> </script>
+    <!-- <script src="src/assets/boston_neighborhoods.json"> </script> -->
+
     <script src='./src/index.js' type='text/javascript'></script>
     <script src='./src/graph.js' type='text/javascript'></script>
     <script src='./src/lollipop.js' type='text/javascript'></script>
-
-
+    <script src='./src/choropleth.js' type='text/javascript'></script>
     <link rel="stylesheet" href="stylesheet/bubble_style.css">
 
 
@@ -18,7 +24,7 @@
 </head>
 <body>
     <h2>UN Financial Data</h2>
-    <div id="chart" class="chart"></div>
+    <svg id="world-map" width="1000" height="500"></svg>
 
 
     <svg class="exp-agency-bubble" width="1000" height="960" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>

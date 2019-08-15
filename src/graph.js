@@ -57,7 +57,7 @@ data = d3.csv("./src/assets/expenditure_category.csv", function(d) {
         .duration(800)
         .attr("y", function(d) {return y(d.exp); })
         .attr("height", function(d) {return height - y(d.exp);})
-        .delay(function(d,i) {console.log(i); return(i*100)})
+        .delay(function(d,i) { return(i*100)})
 
   svg.append("text")
         .attr("x", 200)
@@ -67,6 +67,8 @@ data = d3.csv("./src/assets/expenditure_category.csv", function(d) {
         .style("font-size", "28px")  
         .style("font-weight", "bold")
         .text("Total Expenditure By Category in 2015")
+
+   
 
 })
 
