@@ -1,39 +1,173 @@
-d3.csv("./src/assets/country_donation.csv", function(d) {
-      return {
-          country: d.Donor, 
-          year: +d["Calendar year"], 
-          amount: +d["Math expression"].split(",").join("")
-      }; 
+// Bubble Chart: https://bl.ocks.org/carlvlewis/53d42df2300231c1daacdaf9067043c0
+
+//Expenditure by Agency 
+data = d3.csv("../src/assets/expenditure_by_agency.csv", function(d) {
+    return {
+        agency: d["Agency description"], 
+        year: +d.Year, 
+        exp: +d["Expenditure"].split(",").join(""),
+        exp2: d.Expenditure,
+        acronym: d.Acronym,
+        category: d.Category
+    }
+}).then(function(data) {
+
+
+
+    var svg = d3.select(".exp-agency-bubble"), 
+        width = +svg.attr("width"), 
+        height = +svg.attr("height"); 
+    
+    // var div = d3.select("body").append("div")
+    //         .attr("class", "tooltip")
+    //         // .sytle("opacity", 0); 
+
+    svg.append("text")
+        .attr("x", 200)
+        .attr("y", -30)
+        .attr("dy", "3.5em")
+        .attr("text-anchor", "start")  
+        .style("font-size", "28px")  
+        .style("font-weight", "bold")
+        .text("UN Expenditure by Agency")
+
+    var pack = d3.pack()
+        .size([width-150, height])
+        .padding(1.5); 
+
+
+
+    /////choosing color 
+    var categories = ["United Nations", "Secretariat", "General Assembly", "Economic and Social Council"]
+
+    var color = d3.scaleOrdinal()
+        .domain(data.map(function(d) {return d.category;}))
+        .range(['#fbb4ae','#b3cde3','#ccebc5',
+        '#ffe9a8']);
+        //need 4 colors 
+
+
+
+    
+    //draw circles
+    var root = d3.hierarchy({children: data})
+        .sum(function(d) {return d.exp})
+
+    var node =svg.selectAll(".node")
+        .data(pack(root).leaves())
+        .enter().append("g")
+            .attr("class", "node")
+            .attr("transform", function(d) {return "translate("+ d.x + ',' + d.y + ")"})
+    
+    node.append("circle")
+        .attr("id", function(d) {return d.id; })
+        .attr("r", function(d) {return d.r; })
+        .style("fill", function(d) {return color(d.data.category)})
+        .on("mouseover", function(d) {
+            tooltip.text(d.data.agency + ": $ " + d.data.exp2);
+            tooltip.style("visibility", "visible");
+        })
+        .on("mousemove", function() {
+            return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
+        })
+        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
       
-  }).then(function(data) {
-        var height = 400; 
-        var width = 600; 
-        var maxAmount = d3.max(data, function(d){return d.amount})
-            
-        var y = d3.scaleLinear()
-                    .domain([0, maxAmount])
-                    .range([height, 0]);
-        var x = d3.scale.ordinal()
-                    .rangeRoundBand([0,width])
 
-        var yAxis = d3.axisLeft(y);
-        var xAxis = d3.axisBottom(x);
+          
+        node.append("text")
+                .text(function(d) {return d.data.acronym});
 
-        var svg = d3.select('body').append('svg')
-                    .attr('height', '100%')
-                    .attr('width', '100%')
+        // would be overlapping 
+        // node.append("text")
+        //         .text(function(d) {return d.data.exp});
 
-        var chartGroup = svg.append('g')
-                            .attr('transform', 'translate(50, 50)');
+
+
+
+
+
+        //Legends
+
+
+        var legend = svg.selectAll(".legend")
+            .data(categories)
+            .enter()
+            .append("g")
+            .attr("class", "legend")
+            .attr("transform", "translate(" + 780 + "," + 120 +")")
         
-        var line = d3.line()
-                        .x(function(d) {return x(d.country)})
-                        .y(function(d) {return y(d.amount)});
+        legend.append("rect")
+            .attr("x", 40) 
+            .attr("y", function(d, i) { return 20 * i; })
+            .attr("width", 15)
+            .attr("height", 15)
+            .style("fill", function(d) { return color(d)});
         
-        debugger
-        chartGroup.append('path').attr('d', line(data)); 
+        legend.append("text")
+            .attr("x", 60) 
+            .attr("text-anchor", "start")
+            .attr("dy", "1em") 
+            .attr("y", function(d, i) { return 20 * i; })
+            .text(function(d) {return d;})
+           .attr("font-size", "12px"); 
+       
 
-  })
+
+
+        legend.append("text")
+           .attr("x",80) 
+           .attr("dy", "-.2em")
+           .attr("y",-10)
+           .text("Agency Category")
+           .attr("font-size", "17px"); 
+      
+
+
+
+        //tooptip
+    var tooltip = d3.select("body")
+        .append("div")
+        .style("position", "absolute")
+        .style("z-index", "10")
+        .style("visibility", "hidden")
+        .style("color", "white")
+        .style("padding", "8px")
+        .style("background-color", "rgba(0, 0, 0, 0.75)")
+        .style("border-radius", "6px")
+        .style("font", "12px sans-serif")
+        .text("tooltip");
+})
+
+
+
+
+// // Donation by countries 
+// d3.csv("./src/assets/country_donation.csv", function(d) {
+//       return {
+//           country: d["Donor code"], 
+//           year: +d["Calendar year"], 
+//           donation: +d["Math expression"].split(",").join("")
+//       }; 
+      
+//   }).then(function(data) {
+
+        // const margin = 60;
+        // const width = 1000 - 2 * margin;
+        // const height = 600 - 2 * margin;
+
+
+        // chart.selectAll()
+        //     .data(goals)
+        //     .enter()
+        //     .append('rect')
+        //     .attr('x', (d) => xScale(d.country))
+        //     .attr('y', (d) => yScale(d.donation))
+        //     .attr('height', (d) => height - yScale(d.donation))
+        //     .attr('width', xScale.bandwidth())
+     
+
+
+//   })
   
 
 
