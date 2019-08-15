@@ -17,10 +17,7 @@ data = d3.csv("../src/assets/expenditure_by_agency.csv", function(d) {
     var svg = d3.select(".exp-agency-bubble"), 
         width = +svg.attr("width"), 
         height = +svg.attr("height"); 
-    
-    // var div = d3.select("body").append("div")
-    //         .attr("class", "tooltip")
-    //         // .sytle("opacity", 0); 
+
 
     svg.append("text")
         .attr("x", 200)
@@ -29,7 +26,7 @@ data = d3.csv("../src/assets/expenditure_by_agency.csv", function(d) {
         .attr("text-anchor", "start")  
         .style("font-size", "28px")  
         .style("font-weight", "bold")
-        .text("UN Expenditure by Agency")
+        .text("Total Expenditure by Agency")
 
     var pack = d3.pack()
         .size([width-150, height])
@@ -83,12 +80,7 @@ data = d3.csv("../src/assets/expenditure_by_agency.csv", function(d) {
 
 
 
-
-
-
         //Legends
-
-
         var legend = svg.selectAll(".legend")
             .data(categories)
             .enter()
@@ -141,33 +133,6 @@ data = d3.csv("../src/assets/expenditure_by_agency.csv", function(d) {
 
 
 
-// // Donation by countries 
-// d3.csv("./src/assets/country_donation.csv", function(d) {
-//       return {
-//           country: d["Donor code"], 
-//           year: +d["Calendar year"], 
-//           donation: +d["Math expression"].split(",").join("")
-//       }; 
-      
-//   }).then(function(data) {
-
-        // const margin = 60;
-        // const width = 1000 - 2 * margin;
-        // const height = 600 - 2 * margin;
-
-
-        // chart.selectAll()
-        //     .data(goals)
-        //     .enter()
-        //     .append('rect')
-        //     .attr('x', (d) => xScale(d.country))
-        //     .attr('y', (d) => yScale(d.donation))
-        //     .attr('height', (d) => height - yScale(d.donation))
-        //     .attr('width', xScale.bandwidth())
-     
-
-
-//   })
   
 
 

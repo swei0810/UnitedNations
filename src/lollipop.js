@@ -48,7 +48,6 @@ data = d3.csv("./src/assets/country_donation.csv", function(d) {
             .enter()
             .append("line")
                .attr("x1", x(0))
-            //   .attr("x1", function(d) { return x(d.donation); })
               .attr("x2", x(0))
               .attr("y1", function(d) { return y(d.country); })
               .attr("y2", function(d) { return y(d.country); })
@@ -60,7 +59,6 @@ data = d3.csv("./src/assets/country_donation.csv", function(d) {
               .enter()
               .append("circle")
                 .attr("cx", x(0))
-                // .attr("cx", function(d) { return x(d.donation); })
                 .attr("cy", function(d) { return y(d.country); })
                 .attr("r", "5")
                 .style("fill", "#ccebc5")
@@ -84,7 +82,7 @@ data = d3.csv("./src/assets/country_donation.csv", function(d) {
         .attr("text-anchor", "start")  
         .style("font-size", "28px")  
         .style("font-weight", "bold")
-        .text("Top 22 donations made by countries in 2015")
+        .text("Top 22 Government Donors in 2015")
 
 
   })
