@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
     var dataRange = [1000, 10000, 100000, 500000, 1000000, 5000000, 10000000, 50000000, 100000000, 500000000, 1000000000, 2000000000, 3000000000, 5000000000];
     var colorScheme = ['#d8e1e6', '#ebf2fc', '#d2e2fa', '#bdd6fc', '#a5c7fa', '#8eb9fa', '#77acfc', '#5798fa', '#438cfa', '#2d7df7', '#1b72f5', '#0057db', '#0243a6', '#002152'];
     
-    //for legent 
+    //for legend
     var color = d3.scaleOrdinal()
         .domain(dataRange)
         .range(colorScheme);
@@ -45,8 +45,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
         .range(colorScheme)
 
     Promise.all([
-        
-                // d3.json("src/assets/world-map.geo.json"), 
                 d3.csv("src/assets/country_donation_full.csv", function(d) { data.set(d["Donor code"], +d["Math expression"].split(",").join(""))})
                 ]).then(()=> {
 
@@ -75,9 +73,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
                       }
 
 
-
-
-
                     svg.append("g")
                     .selectAll("path")
                     .data(world_map_json.features)
@@ -95,7 +90,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
                         .style("stroke", "transparent")
                         .attr("class", function(d){ return "Country" } )
                         .style("opacity", .8)
-                        .on("mouseover", mouseOver )
+                        .on("mouseover", mouseOver)
                         .on("mouseleave", mouseLeave )
 
 
@@ -123,28 +118,4 @@ document.addEventListener('DOMContentLoaded', ()=> {
                     .text(function(d) {return d;})
                     .attr("font-size", "12px"); 
                 })
-
 })
-
-
-
-// var svg = d3.select("#world-map");
-// const width = 1000; 
-// const height = 500; 
-
-// var projection = d3.geoNaturalEarth()
-// .scale(150)
-// // .scale(width / 1.3 / Math.PI)
-// .translate([width / 2, height / 2])
-
-
-// svg.append("g")
-//     .selectAll("path")
-//     .data(world_map_json.features)
-//     .enter()
-//     .append("path")
-//         .attr("fill", "#5b92e5")
-//         .attr("d", d3.geoPath()
-//             .projection(projection)
-//         )
-//         .style("stroke", "#fff")
