@@ -3,7 +3,7 @@ Data visualization of UN financial expenditure/revenue
 
 # Background and Overview
 
-As a Computer Science and International Relations double-major, I am interested in ways these fields intersect. This project will show how United Nations is structured, where it is getting funding from , and where the money is being used. This will be an important visualization for the discussion of the future role of intergovernmental organizations in world politics.
+As a Computer Science and International Relations double-major, I am interested in ways these fields intersect. This project will show how United Nations is structured, where it is getting funding from ,and where the money is being used. This will be an important visualization for the discussion of the future role of intergovernmental organizations in world politics.
 
 
 # Functionality and MVP Features
@@ -11,10 +11,10 @@ As a Computer Science and International Relations double-major, I am interested 
 In this project, users will be able to 
 
    * [ ]  look at UN organization tree
-   * [ ]  see animation for growth of UN memberships
+   * [ ]  see animation for donation by country by years
    * [ ]  see expenditure by agency 
-   * [ ]  see donation by country 
    * [ ]  see expenditure by country 
+   * [ ] total expenditure by category
   
 
 
@@ -41,7 +41,7 @@ Day 1: Initial set up
   * Get webpack running with basic entry file and skeleton 
   * Find data files and narrow down the data set 
 
-Day 2: expenditure by agency & donation by country & xpenditure by country 
+Day 2: expenditure by agency & donation by country & expenditure by country 
   *
   *
 
