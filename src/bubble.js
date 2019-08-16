@@ -28,7 +28,7 @@ data = d3.csv("../src/assets/expenditure_by_agency.csv", function(d) {
         .attr("text-anchor", "start")  
         .style("font-size", "28px")  
         .style("font-weight", "bold")
-        .text("Total Expenditure by Agency")
+        .text("TOTAL EXPENDITURE BY AGENCY")
 
     var pack = d3.pack()
         .size([width-150, height])
@@ -103,7 +103,7 @@ data = d3.csv("../src/assets/expenditure_by_agency.csv", function(d) {
             .attr("dy", "1em") 
             .attr("y", function(d, i) { return 20 * i; })
             .text(function(d) {return d;})
-           .attr("font-size", "12px"); 
+            .attr("font-size", "12px"); 
        
 
 
@@ -128,7 +128,7 @@ data = d3.csv("../src/assets/expenditure_by_agency.csv", function(d) {
         .style("padding", "8px")
         .style("background-color", "rgba(0, 0, 0, 0.75)")
         .style("border-radius", "6px")
-        .style("font", "12px sans-serif")
+        // .style("font", "12px sans-serif")
         .text("tooltip");
 })
 

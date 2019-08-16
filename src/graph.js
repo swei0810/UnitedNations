@@ -66,7 +66,7 @@ data = d3.csv("./src/assets/expenditure_category.csv", function(d) {
         .attr("text-anchor", "start")  
         .style("font-size", "28px")  
         .style("font-weight", "bold")
-        .text("Total Expenditure By Category in 2015")
+        .text("TOTAL EXPENDITURE BY CATEGORY IN 2015")
 
    
 

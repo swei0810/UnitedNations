@@ -14,7 +14,6 @@ data = d3.csv("./src/assets/country_donation.csv", function(d) {
     width = 1000 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
     var maxDon = d3.max(data, function(d){return d.donation})
-    var minDon = d3.min(data, function(d){return d.donation})
 
 
 // append the svg object to the body of the page
@@ -82,7 +81,7 @@ data = d3.csv("./src/assets/country_donation.csv", function(d) {
         .attr("text-anchor", "start")  
         .style("font-size", "28px")  
         .style("font-weight", "bold")
-        .text("Top 22 Government Donors in 2015")
+        .text("TOP 22 GOVERNMENT DONORS IN 2015")
 
 
   })

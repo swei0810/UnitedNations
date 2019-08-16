@@ -59,6 +59,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
                           .duration(200)
                           .style("opacity", 1)
                           .style("stroke", "black")
+                        tooltip.text(d.properties.name + " : $ " + Number(d.total).toLocaleString())
+                        tooltip.style("visibility", "visible");
                       }
 
                       let mouseLeave = function(d) {
@@ -70,6 +72,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
                           .transition()
                           .duration(200)
                           .style("stroke", "transparent")
+                        tooltip.style("visibility", "hidden")
                       }
 
 
@@ -118,4 +121,20 @@ document.addEventListener('DOMContentLoaded', ()=> {
                     .text(function(d) {return d;})
                     .attr("font-size", "12px"); 
                 })
+
+
+
+                var tooltip = d3.select("div")
+                .append("div")
+                .style("position", "absolute")
+                .style("left", "65%")
+                .style("top", "480px")
+                .style("z-index", "10")
+                .style("visibility", "hidden")
+                .style("color", "white")
+                .style("padding", "8px")
+                .style("background-color", "rgba(0, 0, 0, 0.75)")
+                .style("border-radius", "6px")
+                .style("font", "20px")
+                .text("tooltip");
 })
