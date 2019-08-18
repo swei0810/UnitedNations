@@ -6,12 +6,30 @@ import { choropleth } from "./choropleth";
 
 
     document.addEventListener("DOMContentLoaded", () => {
+        document.getElementsByClassName("home")[0].addEventListener('click', ()=> {
+            let element = document.getElementById("container");
+            while (element.firstChild) {
+               element.removeChild(element.firstChild);
+           }
+
+           var img = document.createElement('img')
+           img.setAttribute("class", 'wordcloud');          
+           img.setAttribute("src", "src/assets/wordcloud (1).svg")
+           document.getElementById("container").appendChild(img)
+
+
+        })
+
+
+
+
+
         document.getElementsByClassName("button1")[0].addEventListener('click', ()=> {
             let element = document.getElementById("container");
             while (element.firstChild) {
                element.removeChild(element.firstChild);
            }
-           
+
             var svg = document.createElement('div')
             svg.setAttribute("id", 'lollipop');          
             document.getElementById("container").appendChild(svg)

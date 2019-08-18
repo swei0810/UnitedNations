@@ -22,6 +22,9 @@ export const bubble  = () => {
                 .attr("width", width)
                 .attr("height", height)
                 .attr("text-anchor", "middle")
+                .attr("transform",
+                "translate(" + 230+ "," + 10 + ")");
+                
 
             svg.append("text")
                 .attr("x", 200)

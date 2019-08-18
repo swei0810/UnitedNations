@@ -11,7 +11,7 @@ export const graph  = () => {
                 category: d["Expense Category"]
             }
         }).then(function(data) {
-            var margin = {top: 50, right: 50, bottom: 100, left: 100},
+            var margin = {top: 100, right: 30, bottom: 70, left: 300},
             width = 1000 - margin.left - margin.right,
             height = 450 - margin.top - margin.bottom;
 
@@ -62,7 +62,7 @@ export const graph  = () => {
                 .delay(function(d,i) { return(i*100)})
 
         svg.append("text")
-                .attr("x", 200)
+                .attr("x", 150)
                 .attr("y", -120)
                 .attr("dy", "3.5em")
                 .attr("text-anchor", "start")  

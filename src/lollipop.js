@@ -10,7 +10,7 @@ export const lollipop = () => {
         }; 
         
     }).then(function(data) {
-      var margin = {top: 100, right: 30, bottom: 70, left: 100},
+      var margin = {top: 100, right: 30, bottom: 70, left: 300},
       width = 1000 - margin.left - margin.right,
       height = 600 - margin.top - margin.bottom;
       var maxDon = d3.max(data, function(d){return d.donation})
@@ -75,7 +75,7 @@ export const lollipop = () => {
           .attr("x1", function(d) { return x(d.donation); })
   
       svg.append("text")
-          .attr("x", 200)
+          .attr("x", 150)
           .attr("y", -120)
           .attr("dy", "3.5em")
           .attr("text-anchor", "start")  

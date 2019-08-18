@@ -126,6 +126,12 @@ export const choropleth  = () => {
                     .style("border-radius", "6px")
                     .style("font", "20px")
                     .text("tooltip");
+      
+            
+            
+       
+       
+       
         //slider 
         var inputValue = null;
         var year = ["2010","2011","2012","2013","2014","2015", "2016"];

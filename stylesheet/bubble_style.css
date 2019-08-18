@@ -2,6 +2,15 @@ html {
     font-family: 'Signika', sans-serif;
 }
 
+.wordcloud {
+    margin-left: 150px; 
+    margin-top: 20px; 
+}
+
+.title {
+    margin-top: 30px; 
+    margin-left:40px;
+}
 
 #sliderContainer {
     text-align: center;
@@ -10,6 +19,10 @@ html {
     left: 260px; 
 }
 
+#world-map{
+    margin-left:100px;
+    margin-top:10px;
+}
 
 .title {
     font-size: 28px; 
@@ -36,7 +49,7 @@ a {
 
   .social {
     position: fixed;
-    top: 40px;
+    top: 60px;
   }
   .social ul {
     padding: 0px;
@@ -107,3 +120,35 @@ a {
   }
   
 
+
+/* buttons */
+
+.buttons {
+    display: flex; 
+    width: 90%; 
+    top: 15px; 
+    margin-left: 25px; 
+    justify-content: space-around;
+    margin-bottom: 20px; 
+}
+
+.button1, .button2, .button3, .button4 {
+    /* width: 200px; 
+    height: 50px; 
+    background-color: #5b92e5; 
+    cursor: pointer; 
+    text-align: center; */
+    text-align: center; 
+    padding: 20px;
+    background-color:  #5b92e5;
+    color: #fff;
+    font-weight: normal;
+    border: 2px solid  #5b92e5;
+    border-radius: 40px;
+    font-size: 20px; 
+    cursor: pointer; 
+}
+
+.home {
+    cursor: pointer; 
+}
