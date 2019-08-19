@@ -1,4 +1,3 @@
-//import all other files, make them function , delete eventlistenre on the other ones 
 import { lollipop } from "./lollipop"; 
 import { graph } from "./graph"; 
 import { bubble } from "./bubble"; 
@@ -21,9 +20,6 @@ import { choropleth } from "./choropleth";
 
 
         })
-
-
-
 
 
         document.getElementsByClassName("button1")[0].addEventListener('click', ()=> {
@@ -75,29 +71,6 @@ import { choropleth } from "./choropleth";
             svg.setAttribute("id", "world-map")
             document.getElementById("container").appendChild(svg)
 
-            // var slider = document.createElement('div')
-            // div.setAttribute("id", "sliderContainer")
-            // var input = document.createElement('input')
-            // input.setAttribute("id", "timeslide")
-            // input.setAttribute("type", "range")
-            // input.setAttribute("min", "0")
-            // input.setAttribute("max", "6")
-            // input.setAttribute("step", "1")
-            
-            // document.getElementById("sliderContainer").appendChild(input)
-            // var range = document.createElement("span")
-            // range.setAttribute("id", "range")
-            // range.innerHTML = "2010"
-            // document.getElementById("container").appendChild(slider)
-
-
-
-  // <div id="sliderContainer">
-        //     <input id="timeslide" type="range" min="0" max="6" value="0" step="1"/><br>
-        //     <span id="range">2010</span>
-        // </div>
-
-           //call it with default 
             choropleth("src/assets/country_donation_full.csv"); 
 
 

@@ -36,9 +36,6 @@ export const choropleth  = (csv) => {
             .range(colorScheme)
 
 
-
-
-        //function rendergraph(csvinput)
         Promise.all([
                     d3.csv(csv, function(d) { data.set(d["Donor code"], +d["Math expression"].split(",").join(""))})
                     ]).then(()=> {
@@ -150,8 +147,6 @@ export const choropleth  = (csv) => {
         });
 
 
-
-      // update the fill of each SVG of class "incident" with value
       function update(value) {
           document.getElementById("range").innerHTML=year[value];
           inputValue = year[value];
