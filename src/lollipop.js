@@ -10,7 +10,7 @@ export const lollipop = () => {
         }; 
         
     }).then(function(data) {
-      var margin = {top: 100, right: 30, bottom: 70, left: 300},
+      var margin = {top: 100, right: 30, bottom: 90, left: 300},
       width = 1000 - margin.left - margin.right,
       height = 600 - margin.top - margin.bottom;
       var maxDon = d3.max(data, function(d){return d.donation})
@@ -84,6 +84,24 @@ export const lollipop = () => {
           .text("TOP 22 GOVERNMENT DONORS IN 2015")
   
   
+
+
+       svg.append("text")      // text label for the x axis
+        .attr("x", width/2 )
+        .attr("y", height + 80 )
+        .style("text-anchor", "middle")
+        .text("Donation ($)");
+
+
+        svg.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", -60 )
+            .attr("x",0 - (height / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Country Codes");  
+
+        
     })
 
 }

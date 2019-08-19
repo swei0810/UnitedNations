@@ -102,13 +102,18 @@ export const choropleth  = () => {
                         .attr("height", 17)
                         .style("fill", function(d) { return color(d)});
 
-                        legend.append("text")
+                    legend.append("text")
                         .attr("x", 100) 
                         .attr("text-anchor", "start")
                         .attr("dy", "1em") 
                         .attr("y", function(d, i) { return 17 * i; })
-                        .text(function(d) {return d;})
+                        .text(function(d) {return Number(d).toLocaleString();})
                         .attr("font-size", "12px"); 
+
+                    legend.append("text")
+                        .attr("x", 80)
+                        .attr("y", -10)
+                        .text("Donations ($)")
                     })
 
 
@@ -116,8 +121,8 @@ export const choropleth  = () => {
         var tooltip = d3.select("div")
                     .append("div")
                     .style("position", "absolute")
-                    .style("left", "65%")
-                    .style("top", "480px")
+                    .style("left", "70%")
+                    .style("top", "250px")
                     .style("z-index", "10")
                     .style("visibility", "hidden")
                     .style("color", "white")

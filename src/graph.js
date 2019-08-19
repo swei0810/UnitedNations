@@ -11,12 +11,11 @@ export const graph  = () => {
                 category: d["Expense Category"]
             }
         }).then(function(data) {
-            var margin = {top: 100, right: 30, bottom: 70, left: 300},
+            var margin = {top: 118, right: 30, bottom: 200, left: 300},
             width = 1000 - margin.left - margin.right,
-            height = 450 - margin.top - margin.bottom;
+            height = 450 - margin.top - 30;
 
             var maxExp = d3.max(data, function(d){return d.exp})
-            var minExp = d3.min(data, function(d){return d.exp})
 
             var svg = d3.select("#category-graph")
                 .append("svg")
@@ -63,13 +62,37 @@ export const graph  = () => {
 
         svg.append("text")
                 .attr("x", 150)
-                .attr("y", -120)
+                .attr("y", -140)
                 .attr("dy", "3.5em")
                 .attr("text-anchor", "start")  
                 .style("font-size", "28px")  
                 .style("font-weight", "bold")
                 .text("TOTAL EXPENDITURE BY CATEGORY IN 2015")
 
+
+        //axis labels
+        svg.append("text")      // text label for the x axis
+                .attr("x", width/2 )
+                .attr("y", height + 100 )
+                .style("text-anchor", "middle")
+                .text("Activities");
+        
+        
+        svg.append("text")
+                    .attr("transform", "rotate(-90)")
+                    .attr("y", -110 )
+                    .attr("x",0 - (height / 2))
+                    .attr("dy", "1em")
+                    .style("text-anchor", "middle")
+                    .text("Expenditure ($)");  
+        
+         
+        svg.append("text")
+                    .attr("y", height + 110 )
+                    .attr("x", 0)
+                    .attr("dy", "1em")
+                    .style("font-size", "10px" )
+                    .text('* refers to "Normative, treaty-related, knowledge creation activities" ');  
         
 
         })
