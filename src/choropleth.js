@@ -1,18 +1,20 @@
 // http://duspviz.mit.edu/d3-workshop/mapping-data-with-d3/
 // https://www.d3-graph-gallery.com/graph/choropleth_basic.html
-export const choropleth  = () => {
+export const choropleth  = (csv) => {
 
 
 
   const width = 1000; 
   const height = 450; 
 
+  debugger 
+  d3.selectAll("svg").remove(); 
+  
   var svg = d3.select("#world-map")
       .append("svg")
       .attr("width", width)
       .attr("height", height)
         
-      var path = d3.geoPath();
       var projection = d3.geoMercator()
                 .scale(100)
                 .center([0,20])
@@ -33,8 +35,12 @@ export const choropleth  = () => {
             .domain(dataRange)
             .range(colorScheme)
 
+
+
+
+        //function rendergraph(csvinput)
         Promise.all([
-                    d3.csv("src/assets/country_donation_full.csv", function(d) { data.set(d["Donor code"], +d["Math expression"].split(",").join(""))})
+                    d3.csv(csv, function(d) { data.set(d["Donor code"], +d["Math expression"].split(",").join(""))})
                     ]).then(()=> {
 
 
@@ -122,7 +128,7 @@ export const choropleth  = () => {
                     .append("div")
                     .style("position", "absolute")
                     .style("left", "70%")
-                    .style("top", "250px")
+                    .style("top", "320px")
                     .style("z-index", "10")
                     .style("visibility", "hidden")
                     .style("color", "white")
@@ -134,28 +140,60 @@ export const choropleth  = () => {
       
             
             
-       
-       
-       
-        //slider 
+           
+                      //slider 
         var inputValue = null;
-        var year = ["2010","2011","2012","2013","2014","2015", "2016"];
+        var year = ["2010","2011","2012","2013","2014","2015"];
 
         d3.select("#timeslide").on("input", function() {
           update(+this.value);
         });
-      
+
+
+
       // update the fill of each SVG of class "incident" with value
       function update(value) {
           document.getElementById("range").innerHTML=year[value];
           inputValue = year[value];
-          d3.selectAll(".incident")
-              .attr("fill", dateMatch);
-      }
+          let csv; 
+        
+          switch (inputValue) {
+            case "2010":
+              csv = "src/assets/2010.csv"
+              break; 
+            case "2011":
 
-          function dateMatch(data, value) {
-            var d = new Date(data.properties.OPEN_DT);
-            var m = year[d.getYear()];
-          
-        }        
+              csv = "src/assets/2011.csv"
+              break; 
+
+            case "2012":
+              csv = "src/assets/2012.csv"
+              break; 
+
+            case "2013":
+              csv = "src/assets/2013.csv"
+              break; 
+
+            case "2014":
+              csv = "src/assets/2014.csv"
+              break; 
+
+            default:
+              csv = "src/assets/country_donation_full.csv"
+              break; 
+
+          }
+
+          debugger 
+          choropleth(csv); 
+
+        
+      }
   }
+
+
+      
+      
+
+        
+    
