@@ -4,7 +4,7 @@
 export const bubble  = () => {
 
 
-        d3.csv("../src/assets/expenditure_by_agency.csv", function(d) {
+        d3.csv("./src/assets/expenditure_by_agency.csv", function(d) {
             return {
                 agency: d["Agency description"], 
                 year: +d.Year, 
