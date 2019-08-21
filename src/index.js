@@ -8,6 +8,8 @@ import { choropleth } from "./choropleth";
         document.getElementById("sliderContainer").style.display = "none"; 
 
         document.getElementsByClassName("home")[0].addEventListener('click', ()=> {
+            document.getElementById("sliderContainer").style.display = "none"; 
+
             let element = document.getElementById("container");
             while (element.firstChild) {
                element.removeChild(element.firstChild);
