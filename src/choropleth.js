@@ -7,7 +7,6 @@ export const choropleth  = (csv) => {
   const width = 1000; 
   const height = 450; 
 
-  debugger 
   d3.selectAll("svg").remove(); 
   
   var svg = d3.select("#world-map")
@@ -179,7 +178,6 @@ export const choropleth  = (csv) => {
 
           }
 
-          debugger 
           choropleth(csv); 
 
         
