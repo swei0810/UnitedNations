@@ -34,7 +34,10 @@ export const graph  = () => {
                 .call(d3.axisBottom(x))
                 .selectAll("text")
                     .attr("transform", "translate(-10,0)rotate(-45)")
-                    .style("text-anchor", "end");            
+                    .style("text-anchor", "end") 
+                    .style("font-size", "14px")  
+                    .style('font-family', "Signika")
+
 
             var y = d3.scaleLinear()
             .domain([0, maxExp])
@@ -73,7 +76,7 @@ export const graph  = () => {
         //axis labels
         svg.append("text")      // text label for the x axis
                 .attr("x", width/2 )
-                .attr("y", height + 100 )
+                .attr("y", height + 140 )
                 .style("text-anchor", "middle")
                 .text("Activities");
         
@@ -88,7 +91,7 @@ export const graph  = () => {
         
          
         svg.append("text")
-                    .attr("y", height + 110 )
+                    .attr("y", height + 150 )
                     .attr("x", 0)
                     .attr("dy", "1em")
                     .style("font-size", "10px" )
